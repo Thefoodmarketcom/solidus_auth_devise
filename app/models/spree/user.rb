@@ -5,8 +5,9 @@ module Spree
     include UserMethods
 
     devise :database_authenticatable, :registerable, :recoverable,
-           :rememberable, :trackable, :validatable, :encryptable
+           :rememberable, :trackable, :encryptable
     devise :confirmable if Spree::Auth::Config[:confirmable]
+    devise :validatable if Spree::Auth::Config[:validatable]
 
     if defined?(Spree::SoftDeletable)
       include Spree::SoftDeletable
